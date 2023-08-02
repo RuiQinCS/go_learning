@@ -1,3 +1,5 @@
+# 实现内容
+
 实现切片的删除操作。
 
 实现删除切片特定下标元素的方法。
@@ -7,7 +9,7 @@
 + 要求三：改造为泛型方法。
 + 要求四：支持缩容，并且设计缩容机制
 
-
+# slice设计学习
 
 slice 实现源码 runtime/slice.go (版本1.20rc2)
 
@@ -188,3 +190,10 @@ func growslice(oldPtr unsafe.Pointer, newLen, oldCap, num int, et *_type) slice 
 
 ```
 
+![growslice扩容规则分析](./pic/growslice扩容规则分析.jpg)
+
+# 设计缩容规则
+
+由oldCap和newLen的到newCap
+
+![slice缩容设计](./pic/slice缩容设计.jpg)
