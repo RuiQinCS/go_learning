@@ -1,4 +1,4 @@
-module github.com/RuiQinCS/go_learning
+module github.com/rui-cs/go-learning
 
 go 1.21
 
