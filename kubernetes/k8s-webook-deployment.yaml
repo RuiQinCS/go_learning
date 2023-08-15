@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webook
+# specification 是规格说明，含义是这个部署都有什么
+spec:
+  # 副本数量
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webook
+  # template 描述的是 POD 是什么样的
+  template:
+    metadata:
+      # 按照标签找，与上面 matchLabels 对应
+      labels:
+        app: webook
+    # POD 的具体信息
+    spec:
+      containers:
+        - name: webook
+          image: rui-cs/webook:v0.0.1
+          ports:
+            - containerPort: 8080
