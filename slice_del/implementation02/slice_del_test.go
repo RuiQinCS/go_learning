@@ -75,3 +75,15 @@ func TestDelElem(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkDelElem(b *testing.B) {
+	capacity := 100000
+	data := make([]int, capacity)
+	for i := 0; i < capacity; i++ {
+		data[i] = i
+	}
+	idx := 2
+	for i := 0; i < b.N; i++ {
+		_, _ = DelElem(data, idx)
+	}
+}

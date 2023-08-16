@@ -9,6 +9,40 @@
 + 要求三：改造为泛型方法。
 + 要求四：支持缩容，并且设计缩容机制
 
+# 性能测试
+
+测试命令
+
+```shell
+go test -bench=.
+```
+
+测试数据量要大，才能测出效果。
+
+实现一
+
+```shell
+goos: darwin
+goarch: arm64
+pkg: github.com/rui-cs/go-learning/slice_del/implementation01
+BenchmarkDelElem-10        12030             98751 ns/op
+PASS
+ok      github.com/rui-cs/go-learning/slice_del/implementation01        2.780s
+```
+
+实现二
+
+```shell
+goos: darwin
+goarch: arm64
+pkg: github.com/rui-cs/go-learning/slice_del/implementation02
+BenchmarkDelElem-10        24105             45701 ns/op
+PASS
+ok      github.com/rui-cs/go-learning/slice_del/implementation02        1.983s
+```
+
+从测试结果看，实现二的性能更高
+
 # slice设计学习
 
 slice 实现源码 runtime/slice.go (版本1.20rc2)

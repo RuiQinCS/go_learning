@@ -1,20 +1,24 @@
 package implementation02
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 /*
- DelElem input :
-	data : 切片数据
-	idx : 删除该位置（含义为数组下标）的数据
- output :
-	返回删除后的切片
-	错误
+	 DelElem input :
+		data : 切片数据
+		idx : 删除该位置（含义为数组下标）的数据
+	 output :
+		返回删除后的切片
+		错误
 */
+var ErrIndexOutOfRange = errors.New("下标范围错误")
 
 // DelElem by tree 2023-07-28
 func DelElem(data []int, idx int) ([]int, error) {
 	if idx < 0 || idx >= len(data) {
-		return nil, errors.New("wrong index")
+		return nil, fmt.Errorf("err: %w, 长度 %d, 下标 %d", ErrIndexOutOfRange, len(data), idx)
 	}
 
 	//idx >= len(data) could handle
