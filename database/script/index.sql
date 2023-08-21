@@ -1,3 +1,6 @@
+-- mysql version : 8.0.33
+select version();
+
 -- 创建数据库
 create database database_learning;
 use database_learning;
