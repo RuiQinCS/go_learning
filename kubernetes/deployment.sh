@@ -26,6 +26,9 @@ kubectl apply -f k8s-mysql-pvc.yaml
 kubectl apply -f k8s-mysql-pv.yaml
 
 
+# kubectl get pvc
+# kubectl get pv
+
 # nginx 部署
 # 修改 /etc/hosts, 添加 : 127.0.0.1       practice.webook.com
 kubectl apply -f k8s-ingress-nginx.yaml
