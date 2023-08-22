@@ -59,10 +59,7 @@ func main() {
 		product.ID = 1
 		// 会更新 Price 和 Code 两个字段  SET `price`=200, `code`='F42'
 		db.Model(&product).Updates(Product{Price: 200, Code: "F42"}) // 仅更新非零值字段
-
 	}
-
-	// Read exp 2
 	{
 		var product Product
 		product.ID = 1
@@ -72,6 +69,8 @@ func main() {
 	// Delete - exp 1 : 删除 product
 	{
 		var product Product
-		db.Delete(&product, 1)
+		if err := db.Delete(&product, 1).Error; err != nil {
+			panic(err)
+		}
 	}
 }
