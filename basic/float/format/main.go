@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
 func FormatFloat() {
@@ -17,6 +18,15 @@ func FormatFloat() {
 	fmt.Println(fmt.Sprintf("%v", "0")) //0
 }
 
+func FormatFloatStr() {
+	var v interface{}
+	v = float64(2147480000.9999)
+
+	fmt.Println(strconv.FormatFloat(v.(float64), 'f', -1, 64))
+}
+
 func main() {
 	FormatFloat()
+
+	FormatFloatStr()
 }
