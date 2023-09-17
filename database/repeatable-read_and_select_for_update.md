@@ -44,12 +44,12 @@ CREATE TABLE test_transaction_isolation(
 | 事务A                                                        | 事务B                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | begin;                                                       | begin;                                                       |
-|                                                              | SELECT * FROM test_transaction_isolation WHERE id = 3;       |
+|                                                              | SELECT * FROM test_transaction_isolation WHERE id = 3; -- 这里什么都查不到 |
 | INSERT INTO test_transaction_isolation (id, name) VALUES (3,'test_user'); |                                                              |
 | commit;                                                      |                                                              |
-|                                                              | SELECT * FROM test_transaction_isolation WHERE id = 3;       |
-|                                                              | UPDATE test_transaction_isolation SET name = 'tree' WHERE id = 3; |
-|                                                              | SELECT * FROM test_transaction_isolation WHERE id = 3;       |
+|                                                              | SELECT * FROM test_transaction_isolation WHERE id = 3; -- 这里还是什么都查不到 |
+|                                                              | UPDATE test_transaction_isolation SET name = 'tree' WHERE id = 3; -- 这里却可以更新！ |
+|                                                              | SELECT * FROM test_transaction_isolation WHERE id = 3; -- 现在又可以查到了！ |
 |                                                              | commit;                                                      |
 
 [参考](https://www.liaoxuefeng.com/wiki/1177760294764384/1245268672511968)
